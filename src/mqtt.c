@@ -85,7 +85,7 @@ void mqtt_start()
 {
     esp_mqtt_client_config_t mqtt_config = {
         .broker.address.uri = "mqtt://164.41.98.25",
-        .credentials.username = "Dzm7cYEbtxSKDmkKPDGR",
+        .credentials.username = "mO4DhImV97ln5pKPPZkg",
     };
     client = esp_mqtt_client_init(&mqtt_config);
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL);
