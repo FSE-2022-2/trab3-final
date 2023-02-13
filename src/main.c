@@ -62,9 +62,9 @@ void app_main(void)
     conexaoWifiSemaphore = xSemaphoreCreateBinary();
     conexaoMQTTSemaphore = xSemaphoreCreateBinary();
     wifi_start();
-
+    const int hall_gpio = HALL_GPIO;
     xTaskCreate(&conectadoWifi,  "Conexão ao MQTT", 4096, NULL, 1, NULL);
-    xTaskCreate(&teste_hall, "Teste Hall", 4096, NULL, 1, NULL);
+    xTaskCreate(&teste_hall, "Teste Hall", 4096, &hall_gpio, 1, NULL);
     //temp 
     dht_config(DHT11_GPIO);
 }
