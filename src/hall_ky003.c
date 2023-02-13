@@ -9,10 +9,10 @@
 #include "hall_ky003.h"
 #include "json_util.h"
 #include "cJSON.h"
-#define HALL_KY003 4
 
 void teste_hall(void * pvParameter)
 {
+  const int HALL_KY003 = *((int*)pvParameter);
   // Configuração dos pinos dos LEDs 
   // gpio_pad_select_gpio(HALL_KY003);
   esp_rom_gpio_pad_select_gpio(HALL_KY003);
