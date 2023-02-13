@@ -10,6 +10,18 @@
 #include "wifi.h"
 #include "mqtt.h"
 
+/*
+gpio:
+2 - button in
+4 - dht22 in
+18 - hall in
+21 - blue out pwm
+22 - green out pwm
+23 - red out pwm
+13 - buzz out pwm
+12 - laser out pwm
+*/
+
 SemaphoreHandle_t conexaoWifiSemaphore;
 SemaphoreHandle_t conexaoMQTTSemaphore;
 
