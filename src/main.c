@@ -14,7 +14,27 @@
 #include "hall_ky003.h"
 #include "rgb_led.h"
 
-#define DHT11_GPIO 21
+/*
+gpio:
+2 - button in
+4 - dht22 in
+18 - hall in
+21 - blue out pwm
+22 - green out pwm
+23 - red out pwm
+13 - buzz out pwm
+12 - laser out pwm
+*/
+#define BUTTON_GPIO 2
+#define DHT11_GPIO 4
+#define HALL_GPIO 18
+#define BLUE_GPIO 21
+#define GREEN_GPIO 22
+#define RED_GPIO 23
+#define BUZZ_GPIO 13
+#define LASER_GPIO 12
+
+
 SemaphoreHandle_t conexaoWifiSemaphore;
 SemaphoreHandle_t conexaoMQTTSemaphore;
 
