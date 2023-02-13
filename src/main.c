@@ -12,6 +12,7 @@
 #include "dht_sensor.h"
 #include "dht11.h"
 #include "hall_ky003.h"
+#include "rgb_led.h"
 
 #define DHT11_GPIO 21
 SemaphoreHandle_t conexaoWifiSemaphore;
@@ -45,6 +46,8 @@ void app_main(void)
 
     xTaskCreate(&conectadoWifi,  "Conexão ao MQTT", 4096, NULL, 1, NULL);
     xTaskCreate(&teste_hall, "Teste Hall", 4096, NULL, 1, NULL);
+    //led
+    xTaskCreate(&blink_rgb_led, "Touch sensor", 4096, NULL, 1, NULL);
     //temp 
     dht_config(DHT11_GPIO);
 }
