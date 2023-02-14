@@ -49,8 +49,18 @@ $ pio run -t menucofig
 $ ** Project Configuration --->
 ```
 
-4. Para rodar os servidores distribuídos instale extensão [Platform.IO](https://platformio.org/) no VsCode.
+4. Para realizar a build e upload do código na esp32, foi utilizada a extensão [Platform.IO](https://platformio.org/) no VsCode. Com os seguintes detalhes de configuração:
+ 
+- platform = espressif32
+- board = esp32doit-devkit-v1
+- framework = espidf
 
-5. O dashboard com a leitura dos dispositivos pode ser visualizado em [Ailamar-Guilherme-Matheus.](http://164.41.98.25:443/dashboards/43358ba0-aa58-11ed-8436-09bf763c9306)
+5. Para realizar a build e upload do código, contido na pasta buzzer_sketch, do buzzer foi utilizado o [Arduino IDE](https://www.arduino.cc/en/software) com as seguintes configurações:
+
+- board = ESP32-WROOM-DA Module
+
+> Note que o código do buzzer é necessário ser rodado em outra esp32 em paralelo com o código original do projeto em outra placa. Em que a saída d5 da esp32 do buzzer é conectada ao pino d12 da esp32 do projeto para ele ser acionado.
+
+6. O dashboard com a leitura dos dispositivos pode ser visualizado em [Ailamar-Guilherme-Matheus.](http://164.41.98.25:443/dashboards/43358ba0-aa58-11ed-8436-09bf763c9306)
 
 
