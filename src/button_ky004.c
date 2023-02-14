@@ -6,6 +6,8 @@
 #include "esp_log.h"
 #include "driver/gpio.h"
 
+#include "button_ky004.h"
+
 
 xQueueHandle filaDeInterrupcao;
 

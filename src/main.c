@@ -14,6 +14,7 @@
 #include "hall_ky003.h"
 #include "rgb_led.h"
 #include "button_ky004.h"
+#include "laser_ky008.h"
 
 
 /*
@@ -68,6 +69,7 @@ void app_main(void)
     xTaskCreate(&conectadoWifi,  "Conexão ao MQTT", 4096, NULL, 1, NULL);
     xTaskCreate(&teste_hall, "Teste Hall", 4096, (void*)HALL_GPIO, 1, NULL);
     xTaskCreate(&teste_button, "Teste Button", 4096, (void*)BUTTON_GPIO, 1, NULL);
+    xTaskCreate(&teste_laser, "Teste Laser", 4096, (void*)LASER_GPIO, 1, NULL);
     //led
     xTaskCreate(&blink_rgb_led, "Touch sensor", 4096, NULL, 1, NULL);
     //temp 
