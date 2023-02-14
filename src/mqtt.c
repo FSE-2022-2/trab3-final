@@ -19,9 +19,19 @@
 #include "mqtt_client.h"
 
 #include "mqtt.h"
+#include "wifi.h"
+#include "dht_sensor.h"
+#include "dht11.h"
+#include "hall_ky003.h"
+#include "rgb_led.h"
+#include "button_ky004.h"
+#include "laser_ky008.h"
+#include "buzzer_ky012.h"
+#include "json_util.h"
+#include "cJSON.h"
 
 #define TAG "MQTT"
-void mqtt_handle_data(char *topic, char *data);
+void mqtt_handle_data(esp_mqtt_event_handle_t event);
 extern SemaphoreHandle_t conexaoMQTTSemaphore;
 esp_mqtt_client_handle_t client;
 

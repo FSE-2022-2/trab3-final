@@ -3,5 +3,6 @@
 
 void switch_laser();
 void teste_laser(void* pvParameters);
+void handle_intensity(int intensity);
 
 #endif
