@@ -1,7 +1,7 @@
 # Trabalho Final - Fundamentos de Sistemas Embarcados
 
 Este trabalho visa a criação de sensores e atuadores distribuídos baseados nos microcontroladores ESP32 conectados via Wifi através do protocolo MQTT.
-Os microcontroladores ESP32 controlam a aquisição de dados dos sensores, botões e chaves além de acionar saídas de led e outros três sensores.
+Os microcontroladores ESP32 controlam a aquisição de dados dos botões e chaves além de acionar saídas de led e outros três dispositivos.
 
 Mais especificações em: [Trabalho Final 2022.2.](https://gitlab.com/fse_fga/trabalhos-2022_2/trabalho-final-2022-2)
 
