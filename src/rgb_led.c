@@ -33,11 +33,12 @@ void rgb_led_setup()
     ledc_ch[1].mode = LEDC_HIGH_SPEED_MODE;
     ledc_ch[1].timer_idx = LEDC_TIMER_0;
 
+    // Disabled
     // Blue
-    ledc_ch[2].channel = LEDC_CHANNEL_1;
-    ledc_ch[2].gpio = GPIO_NUM_21;
-    ledc_ch[2].mode = LEDC_HIGH_SPEED_MODE;
-    ledc_ch[2].timer_idx = LEDC_TIMER_0;
+    // ledc_ch[2].channel = LEDC_CHANNEL_1;
+    // ledc_ch[2].gpio = GPIO_NUM_21;
+    // ledc_ch[2].mode = LEDC_HIGH_SPEED_MODE;
+    // ledc_ch[2].timer_idx = LEDC_TIMER_0;
 
     ledc_timer_config_t ledc_timer = {
         .duty_resolution = LEDC_TIMER_8_BIT,
@@ -68,8 +69,9 @@ void rgb_set_color(uint8_t red, uint8_t green, uint8_t blue)
     ledc_update_duty(ledc_ch[0].mode, ledc_ch[0].channel);
     ledc_set_duty(ledc_ch[1].mode, ledc_ch[1].channel, green);
     ledc_update_duty(ledc_ch[1].mode, ledc_ch[1].channel);
-    ledc_set_duty(ledc_ch[2].mode, ledc_ch[2].channel, blue);
-    ledc_update_duty(ledc_ch[2].mode, ledc_ch[2].channel);
+    // Disabled
+    // ledc_set_duty(ledc_ch[2].mode, ledc_ch[2].channel, blue);
+    // ledc_update_duty(ledc_ch[2].mode, ledc_ch[2].channel);
 }
 void blink_rgb_led(void *pvParams)
 {
