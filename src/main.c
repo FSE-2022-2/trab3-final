@@ -13,6 +13,8 @@
 #include "dht11.h"
 #include "hall_ky003.h"
 #include "rgb_led.h"
+#include "button_ky004.h"
+
 
 /*
 gpio:
@@ -63,9 +65,9 @@ void app_main(void)
     conexaoWifiSemaphore = xSemaphoreCreateBinary();
     conexaoMQTTSemaphore = xSemaphoreCreateBinary();
     wifi_start();
-    const int hall_gpio = HALL_GPIO;
     xTaskCreate(&conectadoWifi,  "Conexão ao MQTT", 4096, NULL, 1, NULL);
-    xTaskCreate(&teste_hall, "Teste Hall", 4096, &hall_gpio, 1, NULL);
+    xTaskCreate(&teste_hall, "Teste Hall", 4096, (void*)HALL_GPIO, 1, NULL);
+    xTaskCreate(&teste_button, "Teste Button", 4096, (void*)BUTTON_GPIO, 1, NULL);
     //led
     xTaskCreate(&blink_rgb_led, "Touch sensor", 4096, NULL, 1, NULL);
     //temp 
