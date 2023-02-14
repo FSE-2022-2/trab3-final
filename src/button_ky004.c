@@ -20,7 +20,6 @@ static void IRAM_ATTR gpio_isr_handler(void *args)
 void trataInterrupcaoBotao(void *params)
 {
   int pino;
-  int contador = 0;
 
   while(true)
   {
@@ -37,7 +36,7 @@ void trataInterrupcaoBotao(void *params)
         }
 
         // Habilitar novamente a interrupção
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
         gpio_isr_handler_add(pino, gpio_isr_handler, (void *) pino);
       }
 

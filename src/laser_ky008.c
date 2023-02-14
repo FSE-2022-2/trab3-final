@@ -7,7 +7,7 @@
 #include "laser_ky008.h"
 
 static unsigned char is_laser_on = 0;  
-static unsigned char valor_pwm = 0;  
+static unsigned char valor_pwm = 255;  
 
 void switch_laser(){
   is_laser_on = !is_laser_on;
@@ -48,7 +48,7 @@ void teste_laser(void *pvParameter)
       .speed_mode = LEDC_LOW_SPEED_MODE,
       .channel = LEDC_CHANNEL_2,
       .timer_sel = LEDC_TIMER_1,
-      .duty = valor_anterior,
+      .duty = 255,
       .hpoint = 0};
   ledc_channel_config(&channel_config);
 
@@ -64,6 +64,6 @@ void teste_laser(void *pvParameter)
       vTaskDelay(10 / portTICK_PERIOD_MS);
       valor_anterior = valor;
     }
-    vTaskDelay(200 / portTICK_PERIOD_MS);
+    vTaskDelay(2000 / portTICK_PERIOD_MS);
   }
 }

@@ -130,13 +130,13 @@ void mqtt_handle_data(esp_mqtt_event_handle_t event)
 
         switch_laser();
     }
-    else if (strcmp(method, "getJingle") == 0)
+    else if (strcmp(method, "setJingle") == 0)
     {
         cJSON_Delete(msg);
 
         switch_buzzer();
     }
-    else if (strcmp(method, "getIntensidadeLaser") == 0)
+    else if (strcmp(method, "setIntensidadeLaser") == 0)
     {
         int valor = atoi(cJSON_GetObjectItem(params, "value")->valuestring);
         handle_intensity(valor);
