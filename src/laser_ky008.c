@@ -21,7 +21,7 @@ void laser_teste(void *pvParameter)
   ledc_timer_config_t timer_config = {
       .speed_mode = LEDC_LOW_SPEED_MODE,
       .duty_resolution = LEDC_TIMER_8_BIT,
-      .timer_num = LEDC_TIMER_0,
+      .timer_num = LEDC_TIMER_1,
       .freq_hz = 1000,
       .clk_cfg = LEDC_AUTO_CLK};
   ledc_timer_config(&timer_config);
@@ -30,8 +30,8 @@ void laser_teste(void *pvParameter)
   ledc_channel_config_t channel_config = {
       .gpio_num = pino,
       .speed_mode = LEDC_LOW_SPEED_MODE,
-      .channel = LEDC_CHANNEL_0,
-      .timer_sel = LEDC_TIMER_0,
+      .channel = LEDC_CHANNEL_1,
+      .timer_sel = LEDC_TIMER_1,
       .duty = valor_anterior,
       .hpoint = 0};
   ledc_channel_config(&channel_config);
@@ -43,8 +43,8 @@ void laser_teste(void *pvParameter)
     int valor = get_valor_laser();
     if (valor != valor_anterior)
     {
-      ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, valor);
-      ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+      ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, valor);
+      ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
       vTaskDelay(10 / portTICK_PERIOD_MS);
       valor_anterior = valor;
     }
