@@ -25,7 +25,7 @@ Os componentes do sistema permitem:
 
 ## Vídeo de demonstração e dashboard
 
-[![Vídeo de demonstrção do projeto](/assets/dashboard.JPG)](https://youtu.be/jpVEPtObJEc "FSE Trabalho Final")
+[![Vídeo de demonstrção do projeto](/assets/dashboard.JPG)](https://youtu.be/jpVEPtObJEc "Trabalho Final")
 
 ## Instruções de uso
 
