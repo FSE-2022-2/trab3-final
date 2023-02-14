@@ -48,5 +48,6 @@ void laser_teste(void *pvParameter)
       vTaskDelay(10 / portTICK_PERIOD_MS);
       valor_anterior = valor;
     }
+    vTaskDelay(200 / portTICK_PERIOD_MS);
   }
 }
