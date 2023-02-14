@@ -6,13 +6,20 @@
 
 #include "buzzer_ky012.h"
 
+static unsigned char is_buzzer_on = 0;  
+
+void switch_buzzer(){
+    is_buzzer_on = !is_buzzer_on;
+    return;
+}
+
 int handle_alarm_buzzer()
 {
-  
-  // pwm range = [0, 1] off on
+  if(is_buzzer_on){
+    return 1;
+  }
   return 0;
 }
-static int valor_anterior = 0;
 
 void teste_buzzer(void *pvParameter)
 {
@@ -32,7 +39,7 @@ void teste_buzzer(void *pvParameter)
       .speed_mode = LEDC_LOW_SPEED_MODE,
       .channel = LEDC_CHANNEL_3,
       .timer_sel = LEDC_TIMER_2,
-      .duty = valor_anterior,
+      .duty = 0,
       .hpoint = 0};
   ledc_channel_config(&channel_config);
 

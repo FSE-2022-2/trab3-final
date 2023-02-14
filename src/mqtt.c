@@ -27,18 +27,20 @@ esp_mqtt_client_handle_t client;
 
 static void log_error_if_nonzero(const char *message, int error_code)
 {
-    if (error_code != 0) {
+    if (error_code != 0)
+    {
         ESP_LOGE(TAG, "Last error %s: 0x%x", message, error_code);
     }
 }
 
 static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
-    ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%d", base, (int) event_id);
+    ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%d", base, (int)event_id);
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
     int msg_id;
-    switch ((esp_mqtt_event_id_t)event_id) {
+    switch ((esp_mqtt_event_id_t)event_id)
+    {
     case MQTT_EVENT_CONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
         xSemaphoreGive(conexaoMQTTSemaphore);
@@ -63,16 +65,16 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         ESP_LOGI(TAG, "MQTT_EVENT_DATA");
         printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
         printf("DATA=%.*s\r\n", event->data_len, event->data);
-        mqtt_handle_data(event->topic, event->data);
+        mqtt_handle_data(event);
         break;
     case MQTT_EVENT_ERROR:
         ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
-        if (event->error_handle->error_type == MQTT_ERROR_TYPE_TCP_TRANSPORT) {
+        if (event->error_handle->error_type == MQTT_ERROR_TYPE_TCP_TRANSPORT)
+        {
             log_error_if_nonzero("reported from esp-tls", event->error_handle->esp_tls_last_esp_err);
             log_error_if_nonzero("reported from tls stack", event->error_handle->esp_tls_stack_err);
-            log_error_if_nonzero("captured as transport's socket errno",  event->error_handle->esp_transport_sock_errno);
+            log_error_if_nonzero("captured as transport's socket errno", event->error_handle->esp_transport_sock_errno);
             ESP_LOGI(TAG, "Last errno string (%s)", strerror(event->error_handle->esp_transport_sock_errno));
-
         }
         break;
     default:
@@ -92,19 +94,43 @@ void mqtt_start()
     esp_mqtt_client_start(client);
 }
 
-void mqtt_envia_mensagem(char * topico, char * mensagem)
+void mqtt_envia_mensagem(char *topico, char *mensagem)
 {
     int message_id = esp_mqtt_client_publish(client, topico, mensagem, 0, 1, 0);
     ESP_LOGI(TAG, "Mesnagem enviada, ID: %d", message_id);
 }
 
-void mqtt_handle_data(char * topico, char * mensagem)
+void mqtt_handle_data(esp_mqtt_event_handle_t event)
 {
-    // mensagem is temperatura: 25.5
-    char * pch;
-    pch = strtok (mensagem,":");
-    pch = strtok (NULL,":");
-    float temperatura = atof(pch);
-    ESP_LOGI(TAG, "Temperatura: %f", temperatura);
 
+    cJSON *msg = cJSON_Parse(event->data);
+    char *method = cJSON_GetObjectItem(msg, "method")->valuestring;
+    cJSON *params = cJSON_GetObjectItem(msg, "params");
+    ESP_LOGI(TAG, "method=%s", method);
+    ESP_LOGI(TAG, "params=%s", cJSON_Print(params));
+    if (strcmp(method, "temperature") == 0)
+    {
+        float temperatura = atof(cJSON_GetObjectItem(params, "value")->valuestring);
+        ESP_LOGI(TAG, "Temperatura: %f", temperatura);
+    }
+    else if (strcmp(method, "ligarLaser") == 0)
+    {
+
+        cJSON_Delete(msg);
+
+        switch_laser();
+    }
+    else if (strcmp(method, "getJingle") == 0)
+    {
+        cJSON_Delete(msg);
+
+        switch_buzzer();
+    }
+    else if (strcmp(method, "getIntensidadeLaser") == 0)
+    {
+        int valor = atoi(cJSON_GetObjectItem(params, "value")->valuestring);
+        handle_intensity(valor);
+        cJSON_Delete(msg);
+    }
+    
 }

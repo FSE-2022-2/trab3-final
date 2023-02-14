@@ -19,19 +19,28 @@ void teste_hall(void * pvParameter)
   // Configura os pinos dos LEDs como Output
   gpio_set_direction(HALL_KY003, GPIO_MODE_INPUT);
 
-  int leitura = gpio_get_level(HALL_KY003);
-  if (leitura != 1)
+  while (true)
   {
-    leitura = gpio_get_level(HALL_KY003);
-    while(leitura != 1)
+    int leitura = gpio_get_level(HALL_KY003);
+    if (leitura != 1)
     {
-      printf("distância: %d\n", leitura);
-      fflush(stdout);
-      char mensagem[50];
-      sprintf(mensagem, "{\"distancia\": %d}", leitura);
-      mqtt_envia_mensagem("v1/devices/me/telemetry", mensagem);
-      vTaskDelay(5000 / portTICK_PERIOD_MS);
+      leitura = gpio_get_level(HALL_KY003);
+      while(leitura != 1)
+      {
+        printf("Campo magnético: %d\n", leitura);
+        fflush(stdout);
+        char mensagem[50];
+        sprintf(mensagem, "{\"distancia\": %d}", leitura);
+        mqtt_envia_mensagem("v1/devices/me/telemetry", mensagem);
+        vTaskDelay(5000 / portTICK_PERIOD_MS);
+      }
     }
-  } 
+    printf("Campo magnético: %d\n", leitura);
+    fflush(stdout);
+    char mensagem[50];
+    sprintf(mensagem, "{\"distancia\": %d}", leitura);
+    mqtt_envia_mensagem("v1/devices/me/telemetry", mensagem);
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+  }
 
 }

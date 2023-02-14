@@ -6,11 +6,27 @@
 
 #include "laser_ky008.h"
 
+static unsigned char is_laser_on = 0;  
+static unsigned char valor_pwm = 0;  
+
+void switch_laser(){
+  is_laser_on = !is_laser_on;
+  return;
+}
+
+void handle_intensity(int intensity){
+  valor_pwm = intensity * 255 / 100;
+}
+
+
 int get_valor_laser()
 {
   // pwm range = 0..254
-  
-  return 254;
+  if (is_laser_on)
+  {
+    return valor_pwm;
+  } 
+  return 0;
 }
 static int valor_anterior = 0;
 
