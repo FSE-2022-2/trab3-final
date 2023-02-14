@@ -25,7 +25,7 @@ Os componentes do sistema permitem:
 
 ## Dashboard
 
-![Dashboard](assets/dashboard.JPG) 
+![Dashboard](assets/dashboard.jpg) 
 
 ## Vídeo 
 
