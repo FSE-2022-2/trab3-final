@@ -12,7 +12,7 @@
 
 #define LED_PIN GPIO_NUM_2
 
-xQueueHandle output_queue;
+QueueHandle_t output_queue;
 
 static const char *TAG = "OUT_DEVICE";
 
@@ -72,6 +72,6 @@ void handle_touch_sensor(char *topic, const char *key, int payload)
     if (json_message == NULL)
         return;
 
-    mqtt_publish(topic, cJSON_Print(json_message));
+    mqtt_envia_mensagem(topic, cJSON_Print(json_message));
     cJSON_Delete(json_message);
 }

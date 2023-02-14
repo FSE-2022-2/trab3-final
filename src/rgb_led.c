@@ -76,7 +76,7 @@ void blink_rgb_led(void *pvParams)
     int last_sensor_state = 0;
     while (true)
     {
-        rb_led_setup();
+        rgb_led_setup();
 
         int sensor_state = gpio_get_level(15);
 
@@ -94,6 +94,6 @@ void blink_rgb_led(void *pvParams)
             handle_touch_sensor("v1/devices/me/attributes", "led_value", sensor_state);
         }
         last_sensor_state = sensor_state;
-        vTaskDelay(1000 / portTICK_RATE_MS);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
