@@ -20,7 +20,7 @@ Os componentes do sistema permitem:
 - Leitura e envio dos valores de temperatura e umidade pelo sensor DHT11;
 - Acionamento do LED RGB (Saída) à partir dos comandos RPC enviados pelo Dashboard de maneira dimerizável;
 - Acionamento de botão Chave KY-004 que alterna a cor do LED quando acionado;
-- Acionamento de um buzzer KY-012 por meio da dashboard com a tranmissão de uma música;
+- Acionamento de um buzzer KY-012 por meio da dashboard com a transmissão de uma música;
 - Acionamento de um laser KY-008 e controle de sua intensidade pela técnica de PWM.
 
 ## Dashboard
