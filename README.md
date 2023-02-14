@@ -55,7 +55,7 @@ $ ** Project Configuration --->
 - board = esp32doit-devkit-v1
 - framework = espidf
 
-5. Para realizar a build e upload do código, contido na pasta buzzer_sketch, do buzzer foi utilizado o [Arduino IDE](https://www.arduino.cc/en/software) com as seguintes configurações:
+5. Para realizar a build e upload do código do buzzer, contido na pasta [buzzer_sketch](https://github.com/FSE-2022-2/trab3-final/tree/main/buzzer_skecth), foi utilizado o [Arduino IDE](https://www.arduino.cc/en/software) com as seguintes configurações:
 
 - board = ESP32-WROOM-DA Module
 
