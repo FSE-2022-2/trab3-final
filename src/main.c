@@ -34,7 +34,7 @@ gpio:
 #define BLUE_GPIO 21
 #define GREEN_GPIO 22
 #define RED_GPIO 23
-#define BUZZ_GPIO 13
+#define BUZZER_GPIO 13
 #define LASER_GPIO 12
 
 
