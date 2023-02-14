@@ -23,9 +23,13 @@ Os componentes do sistema permitem:
 - Acionamento de um buzzer KY-012 por meio da dashboard com a tranmissão de uma música;
 - Acionamento de um laser KY-008 e controle de sua intensidade pela técnica de PWM.
 
-## Vídeo de demonstração e dashboard
+## Dashboard
 
-[![Vídeo de demonstrção do projeto](/assets/dashboard.JPG)](https://youtu.be/jpVEPtObJEc "Trabalho Final")
+![Dashboard](assets/dashboard.JPG) 
+
+## Vídeo 
+
+[Acesse o vídeo de demonstrção do projeto.](https://youtu.be/jpVEPtObJEc "Trabalho Final")
 
 ## Instruções de uso
 
