@@ -9,7 +9,7 @@
 #include "button_ky004.h"
 
 
-xQueueHandle filaDeInterrupcao;
+QueueHandle_t filaDeInterrupcao;
 
 static void IRAM_ATTR gpio_isr_handler(void *args)
 {
@@ -50,7 +50,7 @@ void teste_button(void* pvParameter)
     const int BUTTON_KY004 = (int) pvParameter;
 
   // Configuração do pino do Botão
-  gpio_pad_select_gpio(BUTTON_KY004);
+  esp_rom_gpio_pad_select_gpio(BUTTON_KY004);
   // Configura o pino do Botão como Entrada
   gpio_set_direction(BUTTON_KY004, GPIO_MODE_INPUT);
   // Configura o resistor de Pulldown para o botão (por padrão a entrada estará em Zero)

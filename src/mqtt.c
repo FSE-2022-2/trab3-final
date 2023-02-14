@@ -42,7 +42,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     case MQTT_EVENT_CONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
         xSemaphoreGive(conexaoMQTTSemaphore);
-        msg_id = esp_mqtt_client_subscribe(client, "dispositivos/#", 0);
+        msg_id = esp_mqtt_client_subscribe(client, "v1/devices/me/rpc/request/+", 0);
         break;
     case MQTT_EVENT_DISCONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");

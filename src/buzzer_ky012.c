@@ -12,9 +12,9 @@ int handle_alarm_buzzer()
   // pwm range = [0, 1] off on
   return 0;
 }
-int valor_anterior = 0;
+static int valor_anterior = 0;
 
-void buzzer_teste(void *pvParameter)
+void teste_buzzer(void *pvParameter)
 {
   int pino = (int)pvParameter;
   // Configuração do Timer

@@ -12,9 +12,9 @@ int get_valor_laser()
   
   return 254;
 }
-int valor_anterior = 0;
+static int valor_anterior = 0;
 
-void laser_teste(void *pvParameter)
+void teste_laser(void *pvParameter)
 {
   int pino = (int)pvParameter;
   // Configuração do Timer
