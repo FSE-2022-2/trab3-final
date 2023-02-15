@@ -138,8 +138,9 @@ void mqtt_handle_data(esp_mqtt_event_handle_t event)
     }
     else if (strcmp(method, "setIntensidadeLaser") == 0)
     {
-        int valor = atoi(cJSON_GetObjectItem(params, "value")->valuestring);
-        handle_intensity(valor);
+        float valor = atof(cJSON_Print(params));
+        int aux = valor;
+        handle_intensity(aux);
         cJSON_Delete(msg);
     }
     

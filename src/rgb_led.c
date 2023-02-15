@@ -87,7 +87,10 @@ void blink_rgb_led(void *pvParams)
         if (sensor_state)
         {
 
-            rgb_set_color(255, 255, 255);
+            rgb_set_color(0, 255, 0);
+        } else{
+
+            rgb_set_color(255, 0, 0);
         }
 
         if (sensor_state != last_sensor_state)
